@@ -1,0 +1,56 @@
+/* Header */
+.page-header{ margin-bottom:34px }
+.page-title{ font-size:clamp(36px,5vw,56px); font-weight:900; margin:0 }
+
+/* Section heading */
+.projects-section{ margin-bottom:70px }
+.section-heading{
+  display:flex; align-items:center; gap:12px; font-size:28px; margin:0 0 22px;
+}
+.bullet{ width:18px; height:18px; border-radius:50%; display:inline-block }
+.bullet.gold{ background:var(--gold) }
+.muted{ color:var(--muted); font-weight:600 }
+
+/* Timeline */
+.timeline{ position:relative; padding-left:40px }
+.timeline::before{
+  content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:var(--divider);
+}
+.timeline-item{ position:relative; margin-bottom:26px }
+.timeline-marker{
+  position:absolute; left:-32px; top:12px; width:16px; height:16px; border-radius:50%;
+  background:var(--gold); border:3px solid var(--bg); box-shadow:0 0 0 2px var(--gold);
+}
+
+.timeline-content{
+  background:var(--white); border-radius:12px; box-shadow:0 4px 20px var(--shadow);
+  padding:20px 22px;
+}
+.top-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px }
+.title{ margin:0; font-size:22px; font-weight:800; line-height:1.3 }
+.title a{ color:inherit; text-decoration:none }
+.title a:hover{ opacity:.85 }
+.role{ font-weight:700 }
+.dot{ margin:0 6px; opacity:.7 }
+.period{
+  white-space:nowrap; padding:6px 12px; background:var(--bg); border-radius:18px;
+  font-size:14px; font-weight:700;
+}
+
+/* Tech tags */
+.stack{ margin:12px 0 2px; display:flex; flex-wrap:wrap; gap:8px }
+.tag{
+  padding:6px 12px; border:2px solid var(--gold); border-radius:22px; font-weight:700; background:var(--white);
+}
+.tag:hover{ background:var(--gold); color:var(--white) }
+
+/* Bullet list */
+.points{ margin:10px 0 0 16px; color:var(--text); }
+.points li{ margin:6px 0; line-height:1.6; color:var(--muted) }
+
+/* Responsive */
+@media (max-width: 768px){
+  .timeline{ padding-left:22px }
+  .timeline-marker{ left:-12px }
+  .top-row{ flex-direction:column; align-items:flex-start; gap:10px }
+}

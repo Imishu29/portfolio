@@ -1,0 +1,75 @@
+<main class="page mt-3">
+  <div class="container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">Resume</h1>
+      <button class="btn btn-primary download-btn" type="button" (click)="downloadResume()">
+        <span class="icon">⤓</span> Download PDF
+      </button>
+    </div>
+
+    <!-- Work Experience -->
+    <section class="resume-section">
+      <h2 class="section-heading">
+        <span class="bullet gold"></span>
+        Work Experience
+      </h2>
+
+      <div class="timeline">
+        <div class="timeline-item" *ngFor="let exp of experiences">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <span class="period">{{ exp.period }}</span>
+            <h3 class="title">{{ exp.title }}</h3>
+            <h4 class="company">
+              {{ exp.company }}<ng-container *ngIf="exp.location"> • {{ exp.location }}</ng-container>
+            </h4>
+            <p class="description">{{ exp.description }}</p>
+
+            <ul class="highlights">
+              <li class="tag" *ngFor="let h of exp.highlights">{{ h }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="resume-section">
+      <h2 class="section-heading">
+        <span class="bullet gold"></span>
+        Education
+      </h2>
+
+      <div class="education-grid">
+        <div class="education-item" *ngFor="let edu of education">
+          <div class="edu-period">{{ edu.period }}</div>
+          <div class="edu-content">
+            <h3>{{ edu.degree }}</h3>
+            <h4>{{ edu.institution }}</h4>
+            <p *ngIf="edu.details">{{ edu.details }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Areas of Expertise -->
+    <section class="resume-section">
+      <h2 class="section-heading">
+        <span class="bullet gold"></span>
+        Areas of Expertise
+      </h2>
+
+      <div class="skills-container">
+        <div class="skill-category" *ngFor="let sc of skills">
+          <h4>{{ sc.category }}:</h4>
+          <div class="skill-tags">
+            <span class="skill-tag" *ngFor="let item of sc.items">{{ item }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>

@@ -1,0 +1,44 @@
+<main class="page mt-3">
+  <div class="container">
+
+    <header class="page-header">
+      <h1 class="page-title">Projects</h1>
+    </header>
+
+    <ng-container *ngFor="let g of groups">
+      <section class="projects-section">
+        <h2 class="section-heading">
+          <span class="bullet gold"></span>
+          {{ g.heading }}
+          <span *ngIf="g.org" class="muted"> • {{ g.org }}</span>
+        </h2>
+
+        <div class="timeline">
+          <article class="timeline-item" *ngFor="let p of g.items">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="top-row">
+                <h3 class="title">
+                  <a *ngIf="p.href; else plain" [href]="p.href" target="_blank" rel="noopener">{{ p.name }}</a>
+                  <ng-template #plain>{{ p.name }}</ng-template>
+                  <span class="dot">•</span>
+                  <span class="role">{{ p.role }}</span>
+                </h3>
+                <div class="period" *ngIf="p.period">{{ p.period }}</div>
+              </div>
+
+              <div class="stack" *ngIf="p.stack?.length">
+                <span class="tag" *ngFor="let t of p.stack">{{ t }}</span>
+              </div>
+
+              <ul class="points">
+                <li *ngFor="let line of p.points">{{ line }}</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+    </ng-container>
+
+  </div>
+</main>

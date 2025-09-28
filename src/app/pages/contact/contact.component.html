@@ -1,0 +1,79 @@
+<main class="page mt-3">
+  <div class="container contact-container">
+
+    <!-- Title + subtext -->
+    <header class="contact-head">
+      <h1 class="section-title">Contact</h1>
+      <p class="muted lead">Looking forward to hearing from you</p>
+    </header>
+
+    <section class="contact-grid">
+      <!-- Left info -->
+      <aside class="info">
+        <div class="block">
+          <h3>Phone</h3>
+          <div>123-456-7890</div>
+        </div>
+
+        <div class="block">
+          <h3>Email</h3>
+          <div>infomysite.com</div>
+        </div>
+      </aside>
+
+      <!-- Right form -->
+     <form class="form dense" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+  <div class="form-row two">
+    <div class="field">
+      <label for="firstName">First Name *</label>
+      <input id="firstName" type="text" formControlName="firstName"
+             [class.invalid]="f.firstName.touched && f.firstName.invalid" />
+      <small class="hint error" *ngIf="f.firstName.touched && f.firstName.hasError('required')">
+        First name is required
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="lastName">Last Name *</label>
+      <input id="lastName" type="text" formControlName="lastName"
+             [class.invalid]="f.lastName.touched && f.lastName.invalid" />
+      <small class="hint error" *ngIf="f.lastName.touched && f.lastName.hasError('required')">
+        Last name is required
+      </small>
+    </div>
+  </div>
+
+  <div class="form-row two">
+    <div class="field">
+      <label for="email">Email *</label>
+      <input id="email" type="email" formControlName="email"
+             [class.invalid]="f.email.touched && f.email.invalid" />
+      <small class="hint error" *ngIf="f.email.touched && f.email.hasError('required')">Email is required</small>
+      <small class="hint error" *ngIf="f.email.touched && f.email.hasError('email')">Enter a valid email</small>
+    </div>
+
+    <div class="field">
+      <label for="subject">Subject</label>
+      <input id="subject" type="text" formControlName="subject" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" formControlName="message"></textarea>
+      <small class="hint">Optional</small>
+    </div>
+  </div>
+
+  <div class="submit-wrap">
+    <button class="primary" type="submit">Submit</button>
+  </div>
+
+</form>
+
+    </section>
+
+  </div>
+</main>
