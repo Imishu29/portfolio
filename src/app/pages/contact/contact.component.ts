@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ContactService } from '../../service/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -11,7 +12,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 })
 export class ContactComponent {
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder , private contact:ContactService) {}
 
   form = this.fb.group({
     firstName: ['', Validators.required],
@@ -28,8 +29,15 @@ export class ContactComponent {
       this.form.markAllAsTouched();
       return;
     }
-    // TODO: wire up to your backend / email service
-    alert('Thanks! Your message has been submitted.\n\n' + JSON.stringify(this.form.value, null, 2));
-    this.form.reset();
+    this.contact.create(this.form.value).subscribe({
+      next:(resp:any)=>{
+        console.log(resp);
+         alert('Thanks! Your message has been submitted.');
+        this.form.reset();
+      }
+    })
+   
   }
+
+  email:any="abhishekrout128@gmail.com"
 }

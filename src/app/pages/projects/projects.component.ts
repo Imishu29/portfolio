@@ -73,7 +73,7 @@ export class ProjectsComponent {
           name: 'ckb-editor-angular',
           role: 'Author & Maintainer',
           period: 'TypeScript • Angular 17',
-          href: '#',
+          href: 'https://www.npmjs.com/package/ckb-editor-angular',
           stack: ['Angular', 'TypeScript', 'Rich-Text'],
           points: [
             '🚀 Rich Text Editor for Angular (alternative to CKEditor, TinyMCE, Quill) with PDF/DOCX export, tables, emoji support, and themes.'
@@ -83,7 +83,7 @@ export class ProjectsComponent {
           name: 'ngx-word-viewer',
           role: 'Author',
           period: 'TypeScript • Angular',
-          href: '#',
+          href: 'https://www.npmjs.com/package/ngx-word-viewer',
           stack: ['Angular', 'Viewer'],
           points: [
             'Angular component for viewing Word (.docx) documents with page navigation & zoom.'
@@ -93,7 +93,7 @@ export class ProjectsComponent {
           name: 'ngx-universal-file-viewer',
           role: 'Author',
           period: 'TypeScript • Angular 12+',
-          href: '#',
+          href: 'https://www.npmjs.com/package/ngx-universal-file-viewer',
           stack: ['Angular', 'Universal', 'PDF/Office'],
           points: [
             'Angular component for viewing PDF, Word, Excel, and PowerPoint files with continuous scroll & page-by-page view.'
