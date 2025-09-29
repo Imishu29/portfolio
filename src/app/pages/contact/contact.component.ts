@@ -39,5 +39,6 @@ export class ContactComponent {
    
   }
 
-  email:any="abhishekrout128@gmail.com"
+  email:any="abhishekrout128@gmail.com";
+  No:any="9109651999"
 }
