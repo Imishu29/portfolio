@@ -1,30 +1,46 @@
-<main class="page mt-3">
+<main class="page projects-page">
   <div class="container">
 
+    <!-- Page Header -->
     <header class="page-header">
       <h1 class="page-title">Projects</h1>
+      <p class="page-subtitle">A collection of my work and open-source contributions</p>
     </header>
 
-    <ng-container *ngFor="let g of groups">
+    <ng-container *ngFor="let g of groups; let groupIndex = index">
       <section class="projects-section">
         <h2 class="section-heading">
-          <span class="bullet gold"></span>
-          {{ g.heading }}
-          <span *ngIf="g.org" class="muted"> • {{ g.org }}</span>
+          <span class="bullet"></span>
+          <span class="heading-text">{{ g.heading }}</span>
+          <span *ngIf="g.org" class="org-badge">{{ g.org }}</span>
+          <span class="heading-line"></span>
         </h2>
 
         <div class="timeline">
-          <article class="timeline-item" *ngFor="let p of g.items">
-            <div class="timeline-marker"></div>
+          <div class="timeline-line"></div>
+          
+          <article class="timeline-item" *ngFor="let p of g.items; let i = index">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+              <span class="marker-ring"></span>
+            </div>
+            
             <div class="timeline-content">
-              <div class="top-row">
-                <h3 class="title">
-                  <a *ngIf="p.href; else plain" [href]="p.href" target="_blank" rel="noopener">{{ p.name }}</a>
-                  <ng-template #plain>{{ p.name }}</ng-template>
-                  <span class="dot">•</span>
-                  <span class="role">{{ p.role }}</span>
-                </h3>
-                <div class="period" *ngIf="p.period">{{ p.period }}</div>
+              <div class="project-header">
+                <div class="project-info">
+                  <h3 class="project-title">
+                    <a *ngIf="p.href && p.href !== '#'" [href]="p.href" target="_blank" rel="noopener" class="project-link">
+                      {{ p.name }}
+                      <i class="fas fa-external-link-alt link-icon"></i>
+                    </a>
+                    <span *ngIf="!p.href || p.href === '#'">{{ p.name }}</span>
+                  </h3>
+                  <span class="project-role">{{ p.role }}</span>
+                </div>
+                <div class="project-period" *ngIf="p.period">
+                  <i class="fas fa-calendar-alt"></i>
+                  {{ p.period }}
+                </div>
               </div>
 
               <div class="stack" *ngIf="p.stack?.length">
@@ -32,7 +48,10 @@
               </div>
 
               <ul class="points">
-                <li *ngFor="let line of p.points">{{ line }}</li>
+                <li *ngFor="let line of p.points">
+                  <span class="point-icon">▹</span>
+                  <span class="point-text">{{ line }}</span>
+                </li>
               </ul>
             </div>
           </article>

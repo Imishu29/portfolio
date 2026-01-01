@@ -1,20 +1,45 @@
+<!-- Loading Screen -->
+<div class="loader" *ngIf="isLoading">
+  <div class="loader-content">
+    <div class="loader-logo">
+      <span class="loader-dot"></span>
+      <span class="loader-name">Abhishek Rout</span>
+    </div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+    <span class="loader-text">Loading...</span>
+  </div>
+</div>
+
+<!-- Header -->
 <header class="header" [class.scrolled]="isScrolled">
   <div class="container">
     <div class="header-inner">
-      <a routerLink="/" class="brand">
+      <a routerLink="/" class="brand" (click)="closeMenu()">
         <span class="dot"></span>
-        <span class="name">Abhishek Rout</span>
-        <span class="title">Software Engineer</span>
+        <span class="brand-text">
+          <span class="name">Abhishek Rout</span>
+          <span class="title">Software Engineer</span>
+        </span>
       </a>
       
       <nav class="nav" [class.active]="isMenuOpen">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a routerLink="/resume" routerLinkActive="active">Resume</a>
-        <a routerLink="/projects" routerLinkActive="active">Projects</a>
-        <a routerLink="/contact" routerLinkActive="active">Contact</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
+          Home
+        </a>
+        <a routerLink="/resume" routerLinkActive="active" (click)="closeMenu()">
+          Resume
+        </a>
+        <a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">
+          Projects
+        </a>
+        <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">
+          Contact
+        </a>
       </nav>
       
-      <button class="menu-toggle" (click)="toggleMenu()">
+      <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
@@ -23,29 +48,76 @@
   </div>
 </header>
 
-<router-outlet></router-outlet>
+<!-- Main Content -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
 
+<!-- Footer -->
 <footer class="footer">
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="currentColor"/>
+    </svg>
+  </div>
+  
   <div class="container">
     <div class="footer-content">
-      <div class="footer-section">
-        <h4>Get in Touch</h4>
-        <p class="contact-info">
-          <i class="fas fa-envelope"></i> {{email}}
-        </p>
+      <div class="footer-section footer-brand">
+        <div class="footer-logo">
+          <span class="dot"></span>
+          <span class="name">Abhishek Rout</span>
+        </div>
+        <p class="footer-tagline">Crafting digital experiences with passion and precision.</p>
       </div>
       
-      <div class="footer-section">
-        <h4>Follow Me</h4>
+      <div class="footer-section footer-contact">
+        <h4>📬 Get in Touch</h4>
+        <a href="mailto:{{email}}" class="contact-link">
+          <i class="fas fa-envelope"></i>
+          <span>{{email}}</span>
+        </a>
+      </div>
+      
+      <div class="footer-section footer-social">
+        <h4>🌐 Connect With Me</h4>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/abhishekrout1999/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="https://x.com/Ishu__ar" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://github.com/Imishu29" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.instagram.com/abhishek_rout29/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/abhishekrout1999/" target="_blank" class="social-link linkedin">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://x.com/Ishu__ar" target="_blank" class="social-link twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://github.com/Imishu29" target="_blank" class="social-link github">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.instagram.com/abhishek_rout29/" target="_blank" class="social-link instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
         </div>
       </div>
       
-      
+      <div class="footer-section footer-quick-links">
+        <h4>🔗 Quick Links</h4>
+        <nav class="footer-nav">
+          <a routerLink="/">Home</a>
+          <a routerLink="/resume">Resume</a>
+          <a routerLink="/projects">Projects</a>
+          <a routerLink="/contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>© {{ currentYear }} Abhishek Rout. All rights reserved.</span>
+      <span class="credits">
+        Crafted with <i class="fas fa-heart heart-icon"></i> a_r
+      </span>
     </div>
   </div>
 </footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" [class.visible]="isScrolled" (click)="scrollTo(0)">
+  <i class="fas fa-arrow-up"></i>
+</button>

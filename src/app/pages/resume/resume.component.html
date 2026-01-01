@@ -1,34 +1,57 @@
-<main class="page mt-3">
+<main class="page resume-page">
   <div class="container">
 
     <!-- Page Header -->
     <div class="page-header">
-      <h1 class="page-title">Resume</h1>
-      <button class="btn btn-primary download-btn" type="button" (click)="downloadResume()">
-        <span class="icon">⤓</span> Download PDF
+      <div class="header-content">
+        <h1 class="page-title">Resume</h1>
+        <p class="page-subtitle">My professional journey and expertise</p>
+      </div>
+      <button class="download-btn" type="button" (click)="downloadResume()">
+        <span class="btn-icon"><i class="fas fa-download"></i></span>
+        <span class="btn-text">Download PDF</span>
+        <span class="btn-shine"></span>
       </button>
     </div>
 
     <!-- Work Experience -->
     <section class="resume-section">
       <h2 class="section-heading">
-        <span class="bullet gold"></span>
-        Work Experience
+        <span class="bullet"></span>
+        <span class="heading-text">Work Experience</span>
+        <span class="heading-line"></span>
       </h2>
 
       <div class="timeline">
-        <div class="timeline-item" *ngFor="let exp of experiences">
-          <div class="timeline-marker"></div>
+        <div class="timeline-line"></div>
+        <div class="timeline-item" *ngFor="let exp of experiences; let i = index">
+          <div class="timeline-marker">
+            <span class="marker-dot"></span>
+            <span class="marker-pulse"></span>
+          </div>
           <div class="timeline-content">
-            <span class="period">{{ exp.period }}</span>
+            <div class="content-header">
+              <span class="period">
+                <i class="fas fa-calendar-alt"></i>
+                {{ exp.period }}
+              </span>
+              <span class="location" *ngIf="exp.location">
+                <i class="fas fa-map-marker-alt"></i>
+                {{ exp.location }}
+              </span>
+            </div>
             <h3 class="title">{{ exp.title }}</h3>
             <h4 class="company">
-              {{ exp.company }}<ng-container *ngIf="exp.location"> • {{ exp.location }}</ng-container>
+              <i class="fas fa-building"></i>
+              {{ exp.company }}
             </h4>
             <p class="description">{{ exp.description }}</p>
 
             <ul class="highlights">
-              <li class="tag" *ngFor="let h of exp.highlights">{{ h }}</li>
+              <li *ngFor="let h of exp.highlights">
+                <span class="highlight-icon">▹</span>
+                {{ h }}
+              </li>
             </ul>
           </div>
         </div>
@@ -38,17 +61,24 @@
     <!-- Education -->
     <section class="resume-section">
       <h2 class="section-heading">
-        <span class="bullet gold"></span>
-        Education
+        <span class="bullet"></span>
+        <span class="heading-text">Education</span>
+        <span class="heading-line"></span>
       </h2>
 
       <div class="education-grid">
         <div class="education-item" *ngFor="let edu of education">
-          <div class="edu-period">{{ edu.period }}</div>
+          <div class="edu-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
           <div class="edu-content">
-            <h3>{{ edu.degree }}</h3>
-            <h4>{{ edu.institution }}</h4>
-            <p *ngIf="edu.details">{{ edu.details }}</p>
+            <span class="edu-period">{{ edu.period }}</span>
+            <h3 class="edu-degree">{{ edu.degree }}</h3>
+            <h4 class="edu-institution">
+              <i class="fas fa-university"></i>
+              {{ edu.institution }}
+            </h4>
+            <p class="edu-details" *ngIf="edu.details">{{ edu.details }}</p>
           </div>
         </div>
       </div>
@@ -57,13 +87,28 @@
     <!-- Areas of Expertise -->
     <section class="resume-section">
       <h2 class="section-heading">
-        <span class="bullet gold"></span>
-        Areas of Expertise
+        <span class="bullet"></span>
+        <span class="heading-text">Areas of Expertise</span>
+        <span class="heading-line"></span>
       </h2>
 
       <div class="skills-container">
         <div class="skill-category" *ngFor="let sc of skills">
-          <h4>{{ sc.category }}:</h4>
+          <h4 class="category-title">
+            <span class="category-icon">
+              <ng-container [ngSwitch]="sc.category">
+                <i *ngSwitchCase="'Languages'" class="fas fa-code"></i>
+                <i *ngSwitchCase="'Frontend'" class="fas fa-laptop-code"></i>
+                <i *ngSwitchCase="'Backend'" class="fas fa-server"></i>
+                <i *ngSwitchCase="'Databases'" class="fas fa-database"></i>
+                <i *ngSwitchCase="'Cloud & DevOps'" class="fas fa-cloud"></i>
+                <i *ngSwitchCase="'Tools'" class="fas fa-tools"></i>
+                <i *ngSwitchCase="'Soft Skills'" class="fas fa-users"></i>
+                <i *ngSwitchDefault class="fas fa-star"></i>
+              </ng-container>
+            </span>
+            {{ sc.category }}
+          </h4>
           <div class="skill-tags">
             <span class="skill-tag" *ngFor="let item of sc.items">{{ item }}</span>
           </div>

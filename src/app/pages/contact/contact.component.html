@@ -1,78 +1,131 @@
-<main class="page mt-3">
+<main class="page contact-page">
   <div class="container contact-container">
 
     <!-- Title + subtext -->
     <header class="contact-head">
-      <h1 class="section-title">Contact</h1>
-      <p class="muted lead">Looking forward to hearing from you</p>
+      <h1 class="section-title">Let's Connect</h1>
+      <p class="lead">Have a project in mind? Let's discuss how I can help you.</p>
     </header>
 
     <section class="contact-grid">
       <!-- Left info -->
       <aside class="info">
-        <div class="block">
-          <h3>Phone</h3>
-          <div>9109651999</div>
+        <div class="info-card">
+          <div class="block">
+            <div class="block-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="block-content">
+              <h3>Phone</h3>
+              <a href="tel:{{phone}}">{{phone}}</a>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="block-content">
+              <h3>Email</h3>
+              <a href="mailto:{{email}}">{{email}}</a>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="block-content">
+              <h3>Location</h3>
+              <span>India</span>
+            </div>
+          </div>
         </div>
 
-        <div class="block">
-          <h3>Email</h3>
-          <div>{{email}}</div>
+        <div class="social-section">
+          <h4>Follow Me</h4>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/abhishekrout1999/" target="_blank" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Imishu29" target="_blank" class="social-btn github">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://x.com/Ishu__ar" target="_blank" class="social-btn twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/abhishek_rout29/" target="_blank" class="social-btn instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
         </div>
       </aside>
 
       <!-- Right form -->
-     <form class="form dense" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-wrapper">
+        <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="form-row two">
+            <div class="field">
+              <label for="firstName">First Name *</label>
+              <input id="firstName" type="text" formControlName="firstName" placeholder="John"
+                     [class.invalid]="f.firstName.touched && f.firstName.invalid" />
+              <small class="hint error" *ngIf="f.firstName.touched && f.firstName.hasError('required')">
+                First name is required
+              </small>
+            </div>
 
-  <div class="form-row two">
-    <div class="field">
-      <label for="firstName">First Name *</label>
-      <input id="firstName" type="text" formControlName="firstName"
-             [class.invalid]="f.firstName.touched && f.firstName.invalid" />
-      <small class="hint error" *ngIf="f.firstName.touched && f.firstName.hasError('required')">
-        First name is required
-      </small>
-    </div>
+            <div class="field">
+              <label for="lastName">Last Name *</label>
+              <input id="lastName" type="text" formControlName="lastName" placeholder="Doe"
+                     [class.invalid]="f.lastName.touched && f.lastName.invalid" />
+              <small class="hint error" *ngIf="f.lastName.touched && f.lastName.hasError('required')">
+                Last name is required
+              </small>
+            </div>
+          </div>
 
-    <div class="field">
-      <label for="lastName">Last Name *</label>
-      <input id="lastName" type="text" formControlName="lastName"
-             [class.invalid]="f.lastName.touched && f.lastName.invalid" />
-      <small class="hint error" *ngIf="f.lastName.touched && f.lastName.hasError('required')">
-        Last name is required
-      </small>
-    </div>
-  </div>
+          <div class="form-row two">
+            <div class="field">
+              <label for="email">Email *</label>
+              <input id="email" type="email" formControlName="email" placeholder="john@example.com"
+                     [class.invalid]="f.email.touched && f.email.invalid" />
+              <small class="hint error" *ngIf="f.email.touched && f.email.hasError('required')">Email is required</small>
+              <small class="hint error" *ngIf="f.email.touched && f.email.hasError('email')">Enter a valid email</small>
+            </div>
 
-  <div class="form-row two">
-    <div class="field">
-      <label for="email">Email *</label>
-      <input id="email" type="email" formControlName="email"
-             [class.invalid]="f.email.touched && f.email.invalid" />
-      <small class="hint error" *ngIf="f.email.touched && f.email.hasError('required')">Email is required</small>
-      <small class="hint error" *ngIf="f.email.touched && f.email.hasError('email')">Enter a valid email</small>
-    </div>
+            <div class="field">
+              <label for="subject">Contact No.</label>
+              <input id="subject" type="text" formControlName="subject" placeholder="+91 98765 43210" />
+            </div>
+          </div>
 
-    <div class="field">
-      <label for="subject">Contact No.</label>
-      <input id="subject" type="text" formControlName="subject" />
-    </div>
-  </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" rows="5" formControlName="message" placeholder="Tell me about your project..."></textarea>
+              <small class="hint">Optional but helps me understand your needs better</small>
+            </div>
+          </div>
 
-  <div class="form-row">
-    <div class="field">
-      <label for="message">Message</label>
-      <textarea id="message" rows="5" formControlName="message"></textarea>
-      <small class="hint">Optional</small>
-    </div>
-  </div>
+          <div class="submit-wrap">
+            <button class="primary" type="submit" [disabled]="isSubmitting">
+              <span *ngIf="!isSubmitting">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </span>
+              <span *ngIf="isSubmitting" class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                Sending...
+              </span>
+            </button>
+          </div>
 
-  <div class="submit-wrap">
-    <button class="primary" type="submit">Submit</button>
-  </div>
-
-</form>
-
+          <div class="success-message" *ngIf="submitSuccess">
+            <i class="fas fa-check-circle"></i>
+            Thank you! Your message has been sent successfully.
+          </div>
+        </form>
+      </div>
     </section>
 
   </div>

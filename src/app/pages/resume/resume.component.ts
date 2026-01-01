@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, OnDestroy, NgZone, PLATFORM_ID, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Exp = {
   period: string;
@@ -29,9 +33,16 @@ type SkillCategory = {
   templateUrl: './resume.component.html',
   styleUrls: ['./resume.component.scss']
 })
-export class ResumeComponent {
+export class ResumeComponent implements AfterViewInit, OnDestroy {
+  private isBrowser: boolean;
 
-  // ========= WORK EXPERIENCE =========
+  constructor(
+    private ngZone: NgZone,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+
   experiences: Exp[] = [
     {
       period: 'Jun 2023 – Present',
@@ -53,7 +64,6 @@ export class ResumeComponent {
     }
   ];
 
-  // ========= EDUCATION =========
   education: Edu[] = [
     {
       period: '2018 – 2022',
@@ -63,7 +73,6 @@ export class ResumeComponent {
     }
   ];
 
-  // ========= AREAS OF EXPERTISE =========
   skills: SkillCategory[] = [
     { category: 'Languages', items: ['JavaScript', 'TypeScript', 'Python', 'Java'] },
     { category: 'Frontend', items: ['React', 'Angular', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'Bootstrap'] },
@@ -74,10 +83,193 @@ export class ResumeComponent {
     { category: 'Soft Skills', items: ['Leadership', 'Cross-functional Collaboration', 'Agile Methodologies', 'Clean Code', 'Problem Solving'] }
   ];
 
-  downloadResume() {
+  ngAfterViewInit(): void {
+    if (this.isBrowser) {
+      this.ngZone.runOutsideAngular(() => {
+        setTimeout(() => this.initAnimations(), 300);
+      });
+    }
+  }
+
+  private initAnimations(): void {
+    // Page Header Animation
+    gsap.fromTo('.page-header',
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power4.out' }
+    );
+
+    gsap.fromTo('.page-title',
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' }
+    );
+
+    gsap.fromTo('.download-btn',
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1, duration: 0.6, delay: 0.4, ease: 'back.out(1.7)' }
+    );
+
+    // Section Headings
+    gsap.utils.toArray('.section-heading').forEach((heading: any, i) => {
+      gsap.fromTo(heading,
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          delay: 0.3 + (i * 0.1),
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: heading,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
+    // Timeline Items
+    gsap.utils.toArray('.timeline-item').forEach((item: any, i) => {
+      gsap.fromTo(item,
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          delay: i * 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
+    // Timeline Markers
+    gsap.utils.toArray('.timeline-marker').forEach((marker: any, i) => {
+      gsap.fromTo(marker,
+        { scale: 0 },
+        {
+          scale: 1,
+          duration: 0.5,
+          delay: 0.3 + (i * 0.1),
+          ease: 'back.out(1.7)',
+          scrollTrigger: {
+            trigger: marker,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
+    // Education Items
+    gsap.utils.toArray('.education-item').forEach((item: any, i) => {
+      gsap.fromTo(item,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: i * 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
+    // Skill Categories
+    gsap.utils.toArray('.skill-category').forEach((category: any, i) => {
+      gsap.fromTo(category,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: i * 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: category,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
+    // Skill Tags Stagger
+    gsap.utils.toArray('.skill-tags').forEach((container: any) => {
+      const tags = container.querySelectorAll('.skill-tag');
+      gsap.fromTo(tags,
+        { opacity: 0, scale: 0.8, y: 10 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.05,
+          ease: 'back.out(1.7)',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
+    // Hover Effects
+    this.initHoverEffects();
+  }
+
+  private initHoverEffects(): void {
+    // Download Button Hover
+    const downloadBtn = document.querySelector('.download-btn');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('mouseenter', () => {
+        gsap.to(downloadBtn, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
+      });
+      downloadBtn.addEventListener('mouseleave', () => {
+        gsap.to(downloadBtn, { scale: 1, duration: 0.3, ease: 'power2.out' });
+      });
+    }
+
+    // Timeline Content Hover
+    document.querySelectorAll('.timeline-content').forEach((content) => {
+      content.addEventListener('mouseenter', () => {
+        gsap.to(content, { x: 10, boxShadow: '0 8px 30px rgba(0,0,0,0.12)', duration: 0.3 });
+      });
+      content.addEventListener('mouseleave', () => {
+        gsap.to(content, { x: 0, boxShadow: '0 4px 20px rgba(0,0,0,0.08)', duration: 0.3 });
+      });
+    });
+
+    // Skill Tags Hover
+    document.querySelectorAll('.skill-tag').forEach((tag) => {
+      tag.addEventListener('mouseenter', () => {
+        gsap.to(tag, { scale: 1.1, y: -3, duration: 0.3, ease: 'back.out(1.7)' });
+      });
+      tag.addEventListener('mouseleave', () => {
+        gsap.to(tag, { scale: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+      });
+    });
+  }
+
+  downloadResume(): void {
     const link = document.createElement('a');
-    link.href = 'assets/resume.pdf';   // put your PDF in /assets
-    link.download = 'Resume.pdf';
+    link.href = 'assets/resume.pdf';
+    link.download = 'Abhishek_Rout_Resume.pdf';
     link.click();
+  }
+
+  ngOnDestroy(): void {
+    if (this.isBrowser) {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
   }
 }

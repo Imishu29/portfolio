@@ -1,44 +1,260 @@
-<main class="page">
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="hello">Hello</span>
-            <span class="im">I'm Abhishek Rout</span>
-          </h1>
-          <p class="hero-subtitle">Software Engineer</p>
-          <p class="hero-description">
-            Results-driven Computer Science Engineer and Full-Stack Developer
-            with expertise in Angular, Next.js, Node.js, Express, and MongoDB.
-            Skilled in deploying scalable applications using Docker, Redis, and
-            DigitalOcean. Strong problem-solving ability with a focus on
-            delivering high-quality, efficient, and impactful solutions.
-          </p>
+<section class="hero">
+  <!-- Background Elements -->
+  <div class="hero-bg-elements">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="grid-pattern"></div>
+  </div>
 
-          <div class="hero-cta">
-            <a routerLink="/resume" class="cta-card resume">
-              <i class="fas fa-file-alt"></i>
-              <span>Resume</span>
-            </a>
-            <a routerLink="/projects" class="cta-card projects">
-              <i class="fas fa-briefcase"></i>
-              <span>Projects</span>
-            </a>
-            <a routerLink="/contact" class="cta-card contact">
-              <i class="fas fa-envelope"></i>
-              <span>Contact</span>
-            </a>
+  <div class="container">
+    <div class="hero-content">
+      <!-- Text Content -->
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Available for opportunities</span>
+        </div>
+
+        <h1 class="hero-title">
+          <div class="title-line">
+            <span class="hello">Hello</span>
+          </div>
+          <div class="title-line">
+            <span class="im">I'm <span class="name-highlight">Abhishek Rout</span></span>
+          </div>
+        </h1>
+
+        <div class="hero-subtitle-wrapper">
+          <p class="hero-subtitle">
+            <span class="subtitle-icon">⚡</span>
+            Software Engineer
+          </p>
+          <div class="subtitle-tags">
+            <span class="tag">Full-Stack</span>
+            <span class="tag">Open Source</span>
+            <span class="tag">Cloud</span>
           </div>
         </div>
 
-        <div class="hero-image">
+        <p class="hero-description">
+          Results-driven Computer Science Engineer and Full-Stack Developer
+          with expertise in Angular, Next.js, Node.js, Express, and MongoDB.
+          Skilled in deploying scalable applications using Docker, Redis, and DigitalOcean.
+        </p>
+
+        <!-- NPM Packages Highlight - NEW -->
+        <div class="npm-highlight">
+          <div class="npm-icon">
+            <i class="fab fa-npm"></i>
+          </div>
+          <div class="npm-content">
+            <span class="npm-label">Open Source Contributor</span>
+            <span class="npm-count">3 Published npm Packages</span>
+          </div>
+          <div class="npm-packages">
+            <a href="https://www.npmjs.com/package/ckb-editor-angular" target="_blank" class="npm-package">
+              <i class="fas fa-cube"></i>
+              <span>ckb-editor-angular</span>
+            </a>
+            <a href="https://www.npmjs.com/package/ngx-word-viewer" target="_blank" class="npm-package">
+              <i class="fas fa-cube"></i>
+              <span>ngx-word-viewer</span>
+            </a>
+            <a href="https://www.npmjs.com/package/ngx-universal-file-viewer" target="_blank" class="npm-package">
+              <i class="fas fa-cube"></i>
+              <span>ngx-universal-file-viewer</span>
+            </a>
+          </div>
+          <div class="npm-downloads">
+            <i class="fas fa-download"></i>
+            <span>500+ Downloads</span>
+          </div>
+        </div>
+
+        <!-- Currently Learning - Honest & Simple -->
+        <div class="learning-badge">
+          <i class="fas fa-book-reader"></i>
+          <span>Currently Learning: </span>
+          <span class="learning-topic">AI & Machine Learning</span>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-count="3">0</span>
+            <span class="stat-plus">+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="3">0</span>
+            <span class="stat-plus"></span>
+            <span class="stat-label">npm Packages</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="500">0</span>
+            <span class="stat-plus">+</span>
+            <span class="stat-label">Downloads</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a routerLink="/resume" class="cta-card resume">
+            <i class="fas fa-file-alt"></i>
+            <span>Resume</span>
+            <i class="fas fa-arrow-right cta-arrow"></i>
+          </a>
+          <a routerLink="/projects" class="cta-card projects">
+            <i class="fas fa-briefcase"></i>
+            <span>Projects</span>
+            <i class="fas fa-arrow-right cta-arrow"></i>
+          </a>
+          <a routerLink="/contact" class="cta-card contact">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+            <i class="fas fa-arrow-right cta-arrow"></i>
+          </a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com/Imishu29" target="_blank" class="social-link" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/abhishekrout1999/" target="_blank" class="social-link" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.npmjs.com/~imishu29" target="_blank" class="social-link npm-link" aria-label="npm">
+            <i class="fab fa-npm"></i>
+          </a>
+          <a href="https://x.com/Ishu__ar" target="_blank" class="social-link" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="hero-image">
+        <div class="image-container">
+          <div class="image-frame">
+            <div class="frame-corner top-left"></div>
+            <div class="frame-corner top-right"></div>
+            <div class="frame-corner bottom-left"></div>
+            <div class="frame-corner bottom-right"></div>
+          </div>
+
           <div class="image-wrapper">
-            <img src="assets/myimg.png" alt="Abhishek Rout" />
-            <div class="image-decoration"></div>
+            <img src="assets/myimg.png" alt="Abhishek Rout" class="profile-img" />
+          </div>
+
+          <div class="image-decoration">
+            <div class="decoration-ring ring-1"></div>
+            <div class="decoration-ring ring-2"></div>
+            <div class="decoration-ring ring-3"></div>
+          </div>
+
+          <div class="floating-elements">
+            <div class="float-item item-1"><i class="fab fa-angular"></i></div>
+            <div class="float-item item-2"><i class="fab fa-node-js"></i></div>
+            <div class="float-item item-3"><i class="fab fa-aws"></i></div>
+            <div class="float-item item-4">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" style="width:32px">
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-badge">
+          <span class="exp-number">3+</span>
+          <span class="exp-text">Years<br />Experience</span>
+        </div>
+
+        <!-- npm Badge on Image -->
+        <div class="npm-badge-image">
+          <i class="fab fa-npm"></i>
+          <span>3 Packages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What I Do Section -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <!-- What I Build -->
+      <div class="about-card">
+        <div class="card-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3>What I Build</h3>
+        <p>Full-stack web applications using Angular, Next.js, Node.js, and MongoDB. Scalable, secure, and production-ready solutions.</p>
+        <div class="card-tags">
+          <span>Angular</span>
+          <span>Next.js</span>
+          <span>Node.js</span>
+          <span>MongoDB</span>
+        </div>
+      </div>
+
+      <!-- Open Source -->
+      <div class="about-card highlight-card">
+        <div class="card-badge">Open Source</div>
+        <div class="card-icon npm-icon-card">
+          <i class="fab fa-npm"></i>
+        </div>
+        <h3>npm Packages</h3>
+        <p>Published 3 npm packages for Angular ecosystem with 500+ downloads. Helping developers with rich text editing & file viewing solutions.</p>
+        <div class="packages-list">
+          <a href="https://www.npmjs.com/package/ckb-editor-angular" target="_blank" class="package-item">
+            <i class="fas fa-cube"></i>
+            <div class="package-info">
+              <span class="package-name">ckb-editor-angular</span>
+              <span class="package-desc">Rich Text Editor for Angular</span>
+            </div>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <a href="https://www.npmjs.com/package/ngx-word-viewer" target="_blank" class="package-item">
+            <i class="fas fa-cube"></i>
+            <div class="package-info">
+              <span class="package-name">ngx-word-viewer</span>
+              <span class="package-desc">Word Document Viewer</span>
+            </div>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <a href="https://www.npmjs.com/package/ngx-universal-file-viewer" target="_blank" class="package-item">
+            <i class="fas fa-cube"></i>
+            <div class="package-info">
+              <span class="package-name">ngx-universal-file-viewer</span>
+              <span class="package-desc">PDF, Word, Excel Viewer</span>
+            </div>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Currently Learning -->
+      <div class="about-card learning-card">
+        <div class="card-icon learning-icon-card">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3>Currently Learning</h3>
+        <p>Exploring AI & Machine Learning to understand how to integrate intelligent features into web applications.</p>
+        <div class="learning-topics">
+          <div class="topic-item">
+            <i class="fas fa-brain"></i>
+            <span>AI Fundamentals</span>
+          </div>
+          <div class="topic-item">
+            <i class="fas fa-robot"></i>
+            <span>Machine Learning Basics</span>
+          </div>
+          <div class="topic-item">
+            <i class="fab fa-python"></i>
+            <span>Python for ML</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
